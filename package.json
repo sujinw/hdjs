@@ -1,6 +1,6 @@
 {
   "name": "hdjs",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "hdjs framework ",
   "main": "index.js",
   "scripts": {
@@ -23,8 +23,17 @@
   "homepage": "https://github.com/houdunwang/hdjs#readme",
   "devDependencies": {
     "angular": "^1.4.8",
+    "angular-qrcode": "^6.1.3",
+    "babel-loader": "^6.2.0",
     "bootstrap": "^4.0.0-alpha.2",
+    "bootstrap-validator": "^0.9.0",
     "browser-sync": "^2.10.0",
+    "chart.js": "^1.0.2",
+    "clockpicker": "0.0.7",
+    "css-loader": "^0.23.0",
+    "daterangepicker": "0.0.3",
+    "datetime-picker": "^0.6.0",
+    "file-loader": "^0.8.5",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-browserify": "^0.5.1",
@@ -42,9 +51,24 @@
     "gulp-util": "^3.0.7",
     "jplayer": "^2.9.2",
     "jquery": "^2.1.4",
+    "jquery-caret": "^1.3.5",
     "js-cookie": "^2.0.4",
     "jshint": "^2.8.0",
+    "jsx-loader": "^0.13.2",
+    "kindeditor": "^4.1.10",
     "lodash": "^3.10.1",
-    "tiny-lr": "^0.2.1"
+    "moment": "^2.10.6",
+    "require-css": "^0.1.8",
+    "requirejs": "^2.1.22",
+    "sass-loader": "^3.1.2",
+    "select2": "^4.0.1",
+    "spectrum-colorpicker": "^1.8.0",
+    "style-loader": "^0.13.0",
+    "tb-webuploader": "^0.1.5-0",
+    "tiny-lr": "^0.2.1",
+    "underscore": "^1.8.3",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.9",
+    "zeroclipboard": "^2.2.0"
   }
 }

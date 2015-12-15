@@ -39,34 +39,26 @@ var scripts = [
 './src/admin.js'
 ],
 libScripts = [
-        //'./output/assets/js/handlebars.js',
-        './output/assets/js/underscore.min.js',
-        './output/assets/js/jquery-1.10.2.min.js',
-        './output/assets/js/jquery-validation/dist/jquery.validate.min.js',
-        './output/assets/js/jquery.validate.extends.js',
-        './output/assets/js/bootstrap/js/bootstrap.min.js',
-        './output/assets/js/bootbox/bootbox.min.js',
-        './output/assets/js/angular.1.3.8.min.js',
-        './output/assets/js/angular-ui-router.min.js',
-        './output/assets/js/bootstrap-select/bootstrap-select.min.js',
-        './output/assets/js/bootstrap-datetimepicker/js/moment.js',
-        './output/assets/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js',
-        './output/assets/js/bootstrap-daterangepicker/js/daterangepicker.js',
-        './output/assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js',
-        './output/assets/plugins/uniform/jquery.uniform.min.js',
-        './output/assets/plugins/fuelux/js/spinner.min.js',
-        './output/assets/js/select2/select2.min.js',
-        './output/assets/js/jquery.blockui.min.js',
-        './output/assets/js/metronic.js',
-        //'./output/assets/js/jquery.dataTables.min.js',
-        './output/assets/js/bootstrap-toastr/toastr.min.js',
-        './output/assets/js/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js',
-        './output/assets/js/bootstrap-modal/js/bootstrap-modal.js',
-        './output/assets/js/bootstrap-modal/js/bootstrap-modalmanager.js',
-        './output/assets/js/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.js',
-        './output/assets/js/bootstrap-maxlength.min.js'
-        //'./output/assets/js/highcharts/js/highcharts.js',
-        //'./output/assets/js/zTree_v3/js/jquery.ztree.all-3.5.min.js'
+        './node_modules/requirejs/require.js',
+        './node_modules/require-css/css.min.js',
+        './node_modules/jquery/dist/jquery.min.js',
+        './node_modules/bootstrap/js/bootstrap.min.js',
+        './node_modules/angular/angular.min.js',
+        './node_modules/js-cookie/src/js.cookie.js',
+        './node_modules/underscore/underscore-min.js',
+        './node_modules/lodash/index.js',
+        './node_modules/chart.js/Chart.min.js',
+        './node_modules/moment/min/moment-with-locale.min.js',
+        './node_modules/spectrum-colorpicker/spectrum.js',
+        './node_modules/select2/select2.min.js',
+        './node_modules/angular-qrcode/angular-qrcode.js',
+        './node_modules/datetime-picker/datepicker.js',
+        './node_modules/daterangepicker/daterangepicker.min.js',
+        './node_modules/bootstrap-validator/dist/validator.min.js',
+        './node_modules/clockpicker/dist/bootstrap-clockpicker.min.js',
+        './node_modules/jquery-caret/jquery.caret.js',
+        './node_modules/webuploader.min.js',
+        './node_modules/kindeditor/kindeditor-all.js',
         ];
 
 // 样式处理
@@ -79,18 +71,30 @@ gulp.task('css', function () {
     .pipe($.minifyCss()) //压缩
     .pipe(gulp.dest('./dist/css'))
 });
+// js处理
+gulp.task('app', function () { 
+    gulp.src(['./dist/js/require.js','./dist/js/angular.min.js','config.js','./scripts/**/*.js'])
+    // .pipe($.jshint.reporter('default'))
+    .pipe($.concat('main.js'))
+    // .pipe($.browserify())
+    // .pipe(gulp.dest('./dist/js'))
+    // .pipe($.rename({ suffix: '.min' }))
+    // .pipe($.uglify())
+    .pipe(gulp.dest('./dist'))
+});
 
 // js处理
-gulp.task('js', function () {
-    gulp.src('scripts/**/*.js')
+gulp.task('js', function () { 
+    gulp.src(libScripts)
     .pipe($.jshint.reporter('default'))
-    .pipe($.concat('main.js'))
-    .pipe($.browserify())
-    .pipe(gulp.dest('./dist/js'))
-    .pipe($.rename({ suffix: '.min' }))
-    .pipe($.uglify())
+    // .pipe($.concat('main.js'))
+    // .pipe($.browserify())
+    // .pipe(gulp.dest('./dist/js'))
+    // .pipe($.rename({ suffix: '.min' }))
+    // .pipe($.uglify())
     .pipe(gulp.dest('./dist/js'))
 });
+
 
 // 清空图片、样式、js
 gulp.task('clean', function() {
@@ -109,6 +113,6 @@ gulp.task('watch', function() {
         }
     });
     gulp.watch('./**/*.css', ['css']).on('change', browserSync.reload);
-    gulp.watch('./scripts/*.js', ['js']).on('change', browserSync.reload);
+    gulp.watch('./**/*.js', ['app']).on('change', browserSync.reload);
     gulp.watch('./**/*.html').on('change', browserSync.reload);
 });

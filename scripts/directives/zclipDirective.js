@@ -1,8 +1,11 @@
-app.directive('hd', [function () {
+hd.directive('abc', [function () {
 	return {
-		restrict: 'AE',
+		restrict: 'A',
+		template:'<h1>ksks</h1>',
 		link: function (scope, iElement, iAttrs) {
-			templete:"<h1>ok</h1>";
+			require(['jquery'],function($){
+				alert($(document.body).html());
+			});
 		}
 	};
-}]);
+}])

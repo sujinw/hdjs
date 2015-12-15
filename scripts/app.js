@@ -1,5 +1,4 @@
-require('angular');
-window.$=  require('jquery');
-// require('bootstrap');
-var app = angular.module('app', []);
-angular.bootstrap(document.element, ['app']);
+ hd = angular.module('hd', []);
+ angular.element(document).ready(function() {
+      angular.bootstrap(document,["hd"]);
+});
